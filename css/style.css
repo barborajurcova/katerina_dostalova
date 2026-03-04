@@ -1,1 +1,27 @@
+:root {
+  --color-bg: #5667B3;         /* Slate Indigo */
+  --color-surface: #9DA7D2;    /* Lavender Grey */
+  --color-text: #ffffff;
+  --color-primary: #EEB9E9;    /* Pink Orchid */
+  --color-secondary: #95D8F1;  /* Sky Blue */
+  --color-accent: #919EDE;     /* Wisteria Blue */
+}
 
+/* Úprava původních gradientů pro nové barvy */
+.dance-card .card-header-latin {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+}
+
+.dance-card .card-header-ballet {
+  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-secondary) 100%);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #5667B3; /* Tmavší text na světlé růžové pro čitelnost */
+}
+
+.btn-secondary {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
