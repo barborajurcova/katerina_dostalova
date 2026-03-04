@@ -1,1 +1,145 @@
+<!DOCTYPE html>
+<html lang="cs" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kateřina Dostálová | Tancuj s vášní</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #5667B3;         /* Slate Indigo */
+      --color-surface: #9DA7D2;    /* Lavender Grey */
+      --color-text: #ffffff;
+      --color-primary: #EEB9E9;    /* Pink Orchid */
+      --color-secondary: #95D8F1;  /* Sky Blue */
+      --color-accent: #919EDE;     /* Wisteria Blue */
+    }
 
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      margin: 0;
+    }
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+
+    /* Navigace */
+    nav { background: rgba(86, 103, 179, 0.95); backdrop-filter: blur(10px); }
+    .nav-link { position: relative; transition: all 0.3s; }
+    .nav-link:hover { color: var(--color-primary); }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--color-primary);
+      transition: width 0.3s;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Hero dekorace s novými barvami */
+    .hero-decoration {
+      position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(238, 185, 233, 0.2) 0%, transparent 70%);
+      z-index: 0; pointer-events: none;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-bg);
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(238, 185, 233, 0.3);
+      filter: brightness(1.05);
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--color-secondary);
+      color: var(--color-secondary);
+      padding: 12px 30px;
+      border-radius: 50px;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .btn-secondary:hover {
+      background: var(--color-secondary);
+      color: var(--color-bg);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade { animation: fadeInUp 0.8s ease forwards; }
+  </style>
+</head>
+<body>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="font-display text-2xl font-bold tracking-wide" style="color: var(--color-primary);">
+        Kateřina Dostálová
+      </a>
+      <div class="hidden md:flex gap-8 font-medium text-sm uppercase tracking-widest">
+        <a href="index.html" class="nav-link" style="color: var(--color-primary);">Domů</a>
+        <a href="lekce.html" class="nav-link">Lekce</a>
+        <a href="workshops.html" class="nav-link">Workshopy</a>
+        <a href="galerie.html" class="nav-link">Galerie</a>
+        <a href="o-mne.html" class="nav-link">O mně</a>
+        <a href="kontakt.html" class="nav-link">Kontakt</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div class="hero-decoration" style="top: -100px; right: -100px;"></div>
+      <div class="hero-decoration" style="bottom: -150px; left: -150px;"></div>
+
+      <div class="relative z-10 text-center px-6 max-w-4xl">
+        <h1 class="font-display text-6xl md:text-8xl font-bold mb-6 animate-fade">
+          Tancuj s <span style="color: var(--color-primary);">lehkostí</span>
+        </h1>
+        <p class="text-lg md:text-xl mb-10 opacity-90 font-light tracking-wide animate-fade" style="animation-delay: 0.2s;">
+          Balet • Latina • Svatební tanec • Pohyb jako terapie
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade" style="animation-delay: 0.4s;">
+          <a href="lekce.html" class="btn-primary">Prozkoumat lekce</a>
+          <a href="kontakt.html" class="btn-secondary">Rezervovat termín</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-6" style="background: var(--color-surface);">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
+        <div>
+          <div class="text-4xl mb-4">🩰</div>
+          <h3 class="font-display text-2xl mb-3">Elegance pohybu</h3>
+          <p class="opacity-80 font-light">Naučím vás vnímat své tělo v souladu s hudbou, bez ohledu na věk či zkušenosti.</p>
+        </div>
+        <div>
+          <div class="text-4xl mb-4">✨</div>
+          <h3 class="font-display text-2xl mb-3">Individuální přístup</h3>
+          <p class="opacity-80 font-light">Každý tanečník je jedinečný. Lekce přizpůsobuji vašemu tempu a cílům.</p>
+        </div>
+        <div>
+          <div class="text-4xl mb-4">🥂</div>
+          <h3 class="font-display text-2xl mb-3">Svatba snů</h3>
+          <p class="opacity-80 font-light">Vytvoříme spolu nezapomenutelnou choreografii pro váš velký den.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-12 text-center opacity-60 text-sm border-t border-white/10">
+    <p>© 2026 Kateřina Dostálová. Všechna práva vyhrazena.</p>
+  </footer>
+
+</body>
+</html>
