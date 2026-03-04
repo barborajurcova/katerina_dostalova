@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kateřina Dostálová | Tancuj s vášní</title>
+  <title>Lekce | Kateřina Dostálová</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-bg: #5667B3;         /* Slate Indigo */
-      --color-surface: #9DA7D2;    /* Lavender Grey */
+      --color-bg: #5667B3;         /* Slate Indigo [cite: 10] */
+      --color-surface: #9DA7D2;    /* Lavender Grey [cite: 9] */
+      --color-primary: #EEB9E9;    /* Pink Orchid [cite: 8] */
+      --color-secondary: #95D8F1;  /* Sky Blue [cite: 2] */
+      --color-accent: #919EDE;     /* Wisteria Blue [cite: 7] */
       --color-text: #ffffff;
-      --color-primary: #EEB9E9;    /* Pink Orchid */
-      --color-secondary: #95D8F1;  /* Sky Blue */
-      --color-accent: #919EDE;     /* Wisteria Blue */
     }
 
     body {
@@ -26,60 +26,38 @@
     }
     .font-display { font-family: 'Cormorant Garamond', serif; }
 
-    /* Navigace */
     nav { background: rgba(86, 103, 179, 0.95); backdrop-filter: blur(10px); }
-    .nav-link { position: relative; transition: all 0.3s; }
-    .nav-link:hover { color: var(--color-primary); }
+    .nav-link { position: relative; transition: all 0.3s; color: white; opacity: 0.8; }
+    .nav-link:hover, .nav-link.active { color: var(--color-primary); opacity: 1; }
     .nav-link::after {
       content: ''; position: absolute; bottom: -4px; left: 0;
       width: 0; height: 2px; background: var(--color-primary);
       transition: width 0.3s;
     }
-    .nav-link:hover::after { width: 100%; }
-
-    /* Hero dekorace s novými barvami */
-    .hero-decoration {
-      position: absolute; width: 500px; height: 500px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(238, 185, 233, 0.2) 0%, transparent 70%);
-      z-index: 0; pointer-events: none;
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    
+    .dance-card {
+      background: rgba(157, 167, 210, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
     }
+    .dance-card:hover { transform: translateY(-5px); }
 
-    .btn-primary {
+    .btn-reserve {
       background: var(--color-primary);
       color: var(--color-bg);
-      padding: 14px 32px;
+      padding: 10px 24px;
       border-radius: 50px;
       font-weight: 600;
       transition: all 0.3s;
       display: inline-block;
     }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(238, 185, 233, 0.3);
-      filter: brightness(1.05);
-    }
-
-    .btn-secondary {
-      border: 2px solid var(--color-secondary);
-      color: var(--color-secondary);
-      padding: 12px 30px;
-      border-radius: 50px;
-      transition: all 0.3s;
-      display: inline-block;
-    }
-    .btn-secondary:hover {
-      background: var(--color-secondary);
-      color: var(--color-bg);
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fade { animation: fadeInUp 0.8s ease forwards; }
+    .btn-reserve:hover { filter: brightness(1.1); transform: scale(1.05); }
   </style>
 </head>
-<body>
+<body class="pt-24">
 
   <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -87,8 +65,8 @@
         Kateřina Dostálová
       </a>
       <div class="hidden md:flex gap-8 font-medium text-sm uppercase tracking-widest">
-        <a href="index.html" class="nav-link" style="color: var(--color-primary);">Domů</a>
-        <a href="lekce.html" class="nav-link">Lekce</a>
+        <a href="index.html" class="nav-link">Domů</a>
+        <a href="lekce.html" class="nav-link active">Lekce</a>
         <a href="workshops.html" class="nav-link">Workshopy</a>
         <a href="galerie.html" class="nav-link">Galerie</a>
         <a href="o-mne.html" class="nav-link">O mně</a>
@@ -97,47 +75,68 @@
     </div>
   </nav>
 
-  <main>
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div class="hero-decoration" style="top: -100px; right: -100px;"></div>
-      <div class="hero-decoration" style="bottom: -150px; left: -150px;"></div>
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    <header class="text-center mb-16">
+      <h1 class="font-display text-5xl font-bold mb-4">Nabídka lekcí</h1>
+      <p class="text-xl opacity-80 font-light" style="color: var(--color-secondary);">Najděte si svůj rytmus</p>
+    </header>
 
-      <div class="relative z-10 text-center px-6 max-w-4xl">
-        <h1 class="font-display text-6xl md:text-8xl font-bold mb-6 animate-fade">
-          Tancuj s <span style="color: var(--color-primary);">lehkostí</span>
-        </h1>
-        <p class="text-lg md:text-xl mb-10 opacity-90 font-light tracking-wide animate-fade" style="animation-delay: 0.2s;">
-          Balet • Latina • Svatební tanec • Pohyb jako terapie
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade" style="animation-delay: 0.4s;">
-          <a href="lekce.html" class="btn-primary">Prozkoumat lekce</a>
-          <a href="kontakt.html" class="btn-secondary">Rezervovat termín</a>
-        </div>
+    <div class="grid md:grid-cols-3 gap-8 mb-24">
+      <div class="dance-card p-8 text-center border-t-4" style="border-top-color: var(--color-primary);">
+        <h3 class="font-display text-3xl mb-4">Latina pro radost</h3>
+        <p class="opacity-70 mb-6 font-light">Salsa, bachata a další temperamentní tance pro uvolnění a radost.</p>
+        <span class="text-xs uppercase tracking-widest py-1 px-3 rounded-full border border-white/20">Všechny úrovně</span>
       </div>
-    </section>
 
-    <section class="py-24 px-6" style="background: var(--color-surface);">
-      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12 text-center">
-        <div>
-          <div class="text-4xl mb-4">🩰</div>
-          <h3 class="font-display text-2xl mb-3">Elegance pohybu</h3>
-          <p class="opacity-80 font-light">Naučím vás vnímat své tělo v souladu s hudbou, bez ohledu na věk či zkušenosti.</p>
-        </div>
-        <div>
-          <div class="text-4xl mb-4">✨</div>
-          <h3 class="font-display text-2xl mb-3">Individuální přístup</h3>
-          <p class="opacity-80 font-light">Každý tanečník je jedinečný. Lekce přizpůsobuji vašemu tempu a cílům.</p>
-        </div>
-        <div>
-          <div class="text-4xl mb-4">🥂</div>
-          <h3 class="font-display text-2xl mb-3">Svatba snů</h3>
-          <p class="opacity-80 font-light">Vytvoříme spolu nezapomenutelnou choreografii pro váš velký den.</p>
-        </div>
+      <div class="dance-card p-8 text-center border-t-4" style="border-top-color: var(--color-secondary);">
+        <h3 class="font-display text-3xl mb-4">Moderní balet</h3>
+        <p class="opacity-70 mb-6 font-light">Elegance a technika v moderním pojetí. Vhodné pro děti i dospělé.</p>
+        <span class="text-xs uppercase tracking-widest py-1 px-3 rounded-full border border-white/20">4+ let</span>
       </div>
-    </section>
+
+      <div class="dance-card p-8 text-center border-t-4" style="border-top-color: var(--color-accent);">
+        <h3 class="font-display text-3xl mb-4">Svatební tanec</h3>
+        <p class="opacity-70 mb-6 font-light">Individuální příprava na váš velký den. Choreografie přesně na míru.</p>
+        <span class="text-xs uppercase tracking-widest py-1 px-3 rounded-full border border-white/20">Individuální</span>
+      </div>
+    </div>
+
+    <div class="bg-white/5 rounded-3xl p-8 border border-white/10">
+      <h2 class="font-display text-4xl mb-8 text-center">Aktuální rozvrh</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left">
+          <thead class="border-b border-white/10 text-sm uppercase tracking-widest opacity-60">
+            <tr>
+              <th class="py-4 px-4">Den a Čas</th>
+              <th class="py-4 px-4">Lekce</th>
+              <th class="py-4 px-4">Stav</th>
+              <th class="py-4 px-4 text-right">Akce</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5">
+            <tr>
+              <td class="py-6 px-4">Pondělí 16:00</td>
+              <td class="py-6 px-4 font-semibold">Balet pro děti</td>
+              <td class="py-6 px-4"><span class="text-green-300">Volno</span></td>
+              <td class="py-6 px-4 text-right">
+                <a href="kontakt.html?lekce=balet-deti" class="btn-reserve">Rezervovat</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-6 px-4">Středa 18:30</td>
+              <td class="py-6 px-4 font-semibold">Latina pro ženy</td>
+              <td class="py-6 px-4"><span class="text-green-300">Volno</span></td>
+              <td class="py-6 px-4 text-right">
+                <a href="kontakt.html?lekce=latina-zeny" class="btn-reserve">Rezervovat</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </main>
 
-  <footer class="py-12 text-center opacity-60 text-sm border-t border-white/10">
+  <footer class="py-12 text-center opacity-60 text-sm">
     <p>© 2026 Kateřina Dostálová. Všechna práva vyhrazena.</p>
   </footer>
 
