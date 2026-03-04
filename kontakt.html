@@ -1,1 +1,175 @@
+<!DOCTYPE html>
+<html lang="cs" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt | Kateřina Dostálová</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #5667B3;         /* Slate Indigo */
+      --color-surface: #9DA7D2;    /* Lavender Grey */
+      --color-primary: #EEB9E9;    /* Pink Orchid */
+      --color-secondary: #95D8F1;  /* Sky Blue */
+      --color-text: #ffffff;
+    }
 
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      margin: 0;
+    }
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+
+    nav { background: rgba(86, 103, 179, 0.95); backdrop-filter: blur(10px); }
+    .nav-link { position: relative; transition: all 0.3s; color: white; opacity: 0.8; }
+    .nav-link:hover, .nav-link.active { color: var(--color-primary); opacity: 1; }
+
+    .input-field {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(157, 167, 210, 0.3);
+      border-radius: 12px;
+      padding: 16px;
+      width: 100%;
+      color: white;
+      transition: all 0.3s;
+    }
+    .input-field:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-card {
+      background: rgba(145, 158, 222, 0.15);
+      border-radius: 24px;
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-submit {
+      background: var(--color-primary);
+      color: var(--color-bg);
+      font-weight: 700;
+      padding: 16px;
+      border-radius: 50px;
+      width: 100%;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(238, 185, 233, 0.2);
+    }
+  </style>
+</head>
+<body class="pt-24">
+
+  <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="font-display text-2xl font-bold" style="color: var(--color-primary);">
+        Kateřina Dostálová
+      </a>
+      <div class="hidden md:flex gap-8 font-medium text-sm uppercase tracking-widest">
+        <a href="index.html" class="nav-link">Domů</a>
+        <a href="lekce.html" class="nav-link">Lekce</a>
+        <a href="workshops.html" class="nav-link">Workshopy</a>
+        <a href="galerie.html" class="nav-link">Galerie</a>
+        <a href="o-mne.html" class="nav-link">O mně</a>
+        <a href="kontakt.html" class="nav-link active">Kontakt</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    <header class="text-center mb-16">
+      <h1 class="font-display text-5xl font-bold mb-4">Pojďme společně tančit</h1>
+      <p class="text-xl opacity-80 font-light">Rezervujte si termín nebo mi napište dotaz</p>
+    </header>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <div class="space-y-8">
+        <div class="contact-card">
+          <h3 class="font-display text-2xl mb-6" style="color: var(--color-secondary);">Kde mě najdete</h3>
+          <div class="space-y-6">
+            <div class="flex items-center gap-4">
+              <span class="text-2xl">📍</span>
+              <p class="opacity-90 font-light">Taneční studio "V Pohybu", Praha 1</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="text-2xl">📞</span>
+              <p class="opacity-90 font-light">+420 777 123 456</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="text-2xl">✉️</span>
+              <p class="opacity-90 font-light">info@katerinadostalova.cz</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card" style="background: var(--color-surface); opacity: 0.8;">
+          <h3 class="font-display text-2xl mb-4">Otevírací doba</h3>
+          <p class="text-sm font-light leading-relaxed">
+            Lekce probíhají dle rozvrhu. Pro individuální lekce mě prosím kontaktujte alespoň týden předem.
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <form id="contactForm" class="space-y-4">
+          <div>
+            <label class="text-xs uppercase tracking-widest opacity-60 mb-2 block">Vaše jméno</label>
+            <input type="text" required class="input-field" placeholder="Jméno a příjmení">
+          </div>
+          <div>
+            <label class="text-xs uppercase tracking-widest opacity-60 mb-2 block">E-mail</label>
+            <input type="email" required class="input-field" placeholder="email@priklad.cz">
+          </div>
+          <div>
+            <label class="text-xs uppercase tracking-widest opacity-60 mb-2 block">Předmět / Lekce</label>
+            <input type="text" id="subject" class="input-field" placeholder="O co máte zájem?">
+          </div>
+          <div>
+            <label class="text-xs uppercase tracking-widest opacity-60 mb-2 block">Zpráva</label>
+            <textarea rows="4" class="input-field" placeholder="Vaše zpráva..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Odeslat poptávku</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-12 text-center opacity-60 text-sm">
+    <p>© 2026 Kateřina Dostálová. Všechna práva vyhrazena.</p>
+  </footer>
+
+  <script>
+    // Inteligentní předvyplnění z URL (např. ?lekce=balet nebo ?akce=salsa)
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const lekce = urlParams.get('lekce');
+      const akce = urlParams.get('akce');
+      
+      const subjectField = document.getElementById('subject');
+      
+      if (lekce) {
+        subjectField.value = "Rezervace lekce: " + lekce.replace('-', ' ');
+      } else if (akce) {
+        subjectField.value = "Registrace na workshop: " + akce.replace('-', ' ');
+      }
+    };
+
+    document.getElementById('contactForm').onsubmit = function(e) {
+      e.preventDefault();
+      alert('Děkuji za zprávu! Brzy se vám ozvu.');
+      this.reset();
+    };
+  </script>
+
+</body>
+</html>
