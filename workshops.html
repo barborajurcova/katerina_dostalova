@@ -10,11 +10,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-bg: #5667B3;         /* Slate Indigo */
-      --color-surface: #9DA7D2;    /* Lavender Grey */
-      --color-primary: #EEB9E9;    /* Pink Orchid */
-      --color-secondary: #95D8F1;  /* Sky Blue */
-      --color-accent: #919EDE;     /* Wisteria Blue */
+      --color-bg: #5667B3;         /* Slate Indigo [cite: 1] */
+      --color-surface: #9DA7D2;    /* Lavender Grey [cite: 1] */
+      --color-primary: #EEB9E9;    /* Pink Orchid [cite: 1] */
+      --color-secondary: #95D8F1;  /* Sky Blue [cite: 1] */
+      --color-accent: #919EDE;     /* Wisteria Blue [cite: 1] */
       --color-text: #ffffff;
     }
 
@@ -26,21 +26,14 @@
     }
     .font-display { font-family: 'Cormorant Garamond', serif; }
 
-    /* Navigace */
     nav { background: rgba(86, 103, 179, 0.95); backdrop-filter: blur(10px); }
     .nav-link { position: relative; transition: all 0.3s; color: white; opacity: 0.8; }
     .nav-link:hover, .nav-link.active { color: var(--color-primary); opacity: 1; }
-    .nav-link::after {
-      content: ''; position: absolute; bottom: -4px; left: 0;
-      width: 0; height: 2px; background: var(--color-primary);
-      transition: width 0.3s;
-    }
-    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
     /* Styl karet Workshopu */
     .workshop-card {
-      background: rgba(157, 167, 210, 0.25);
-      border: 1px solid rgba(149, 216, 241, 0.3);
+      background: rgba(157, 167, 210, 0.25); /* Lavender Grey s průhledností */
+      border: 1px solid rgba(149, 216, 241, 0.3); /* Jemný Sky Blue okraj */
       border-radius: 24px;
       transition: all 0.4s ease;
     }
@@ -48,6 +41,14 @@
       border-color: var(--color-primary);
       box-shadow: 0 15px 30px rgba(238, 185, 233, 0.15);
       transform: translateY(-5px);
+    }
+
+    .badge-new {
+      background: var(--color-secondary);
+      color: var(--color-bg);
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
     }
 
     /* Modal styl */
@@ -80,7 +81,6 @@
       border-radius: 50px;
       font-weight: 600;
       transition: all 0.3s;
-      display: inline-block;
     }
   </style>
 </head>
@@ -104,28 +104,28 @@
 
   <main class="max-w-6xl mx-auto px-6 py-12">
     <header class="text-center mb-20">
-      <h1 class="font-display text-5xl font-bold mb-4">Intenzivní workshopy</h1>
-      <p class="text-xl opacity-80 font-light" style="color: var(--color-primary);">Zrychlete svůj pokrok</p>
+      <h1 class="font-display text-5xl font-bold mb-4">Intenzivní zážitky</h1>
+      <p class="text-xl opacity-80 font-light" style="color: var(--color-primary);">Workshopy, které vás posunou dál</p>
     </header>
 
     <div class="grid md:grid-cols-2 gap-10">
       <div class="workshop-card p-10 flex flex-col justify-between">
         <div>
           <div class="flex justify-between items-start mb-6">
-            <span class="bg-blue-400/20 text-blue-200 text-xs font-bold px-3 py-1 rounded-full uppercase">Intenzivní</span>
+            <span class="badge-new text-xs uppercase">Bestseller</span>
             <div class="text-right">
               <p class="font-display text-4xl font-bold" style="color: var(--color-primary);">560 Kč</p>
-              <p class="text-xs opacity-60 text-white">za osobu</p>
+              <p class="text-xs opacity-60">za osobu</p>
             </div>
           </div>
-          <h3 class="font-display text-3xl mb-4">Salsa Weekend</h3>
-          <p class="opacity-70 mb-8 font-light leading-relaxed">Dva dny plné temperamentu. Zaměříme se na techniku vedení a dámský styling.</p>
+          <h3 class="font-display text-3xl mb-4">Salsa Intensive Weekend</h3>
+          <p class="opacity-70 mb-8 font-light leading-relaxed">Dva dny plné energie, kde se zaměříme na styling a pokročilé figury. Vhodné pro mírně pokročilé.</p>
           <div class="flex items-center gap-3 text-sm opacity-80 mb-10">
             <span style="color: var(--color-secondary);">📅</span> 15. - 16. února 2026
           </div>
         </div>
         <div class="flex flex-col gap-4">
-          <button class="btn-info text-center" onclick="openModal('Salsa Weekend', '<p><strong>Program:</strong><br>Sobota: 10:00 - 16:00 (Základy a figury)<br>Neděle: 10:00 - 15:00 (Styling a muzikálnost)</p>')">Detailní informace</button>
+          <button class="btn-info text-center" onclick="openModal('Salsa Weekend', '<p><strong>Program:</strong><br>Sobota: 10-16h technika<br>Neděle: 10-15h styling</p><p class=\'mt-4\'><strong>Místo:</strong> Hlavní taneční sál, budova A.</p>')">Detailní informace</button>
           <a href="kontakt.html?akce=salsa-weekend" class="btn-register text-center">Registrovat se</a>
         </div>
       </div>
@@ -133,21 +133,21 @@
       <div class="workshop-card p-10 flex flex-col justify-between">
         <div>
           <div class="flex justify-between items-start mb-6">
-            <span class="bg-pink-400/20 text-pink-200 text-xs font-bold px-3 py-1 rounded-full uppercase">Masterclass</span>
+            <span class="badge-new text-xs uppercase" style="background: var(--color-primary);">Nové</span>
             <div class="text-right">
               <p class="font-display text-4xl font-bold" style="color: var(--color-secondary);">1800 Kč</p>
-              <p class="text-xs opacity-60 text-white">za osobu</p>
+              <p class="text-xs opacity-60">za osobu</p>
             </div>
           </div>
-          <h3 class="font-display text-3xl mb-4">Bachata Sensual</h3>
-          <p class="opacity-70 mb-8 font-light leading-relaxed">Masterclass zaměřená na plynulost pohybu a napojení v páru.</p>
+          <h3 class="font-display text-3xl mb-4">Bachata Sensual Masterclass</h3>
+          <p class="opacity-70 mb-8 font-light leading-relaxed">Exkluzivní masterclass zaměřená na plynulost pohybu a napojení na partnera v duchu Sensual stylu.</p>
           <div class="flex items-center gap-3 text-sm opacity-80 mb-10">
             <span style="color: var(--color-primary);">📅</span> 8. května 2026
           </div>
         </div>
         <div class="flex flex-col gap-4">
-          <button class="btn-info text-center" onclick="openModal('Bachata Masterclass', '<p><strong>Téma:</strong> Propojení a izolace těla<br><strong>Lektor:</strong> Kateřina Dostálová<br><strong>Čas:</strong> 14:00 - 18:00</p>')">Detailní informace</button>
-          <a href="kontakt.html?akce=bachata-sensual" class="btn-register text-center">Registrovat se</a>
+          <button class="btn-info text-center" onclick="openModal('Bachata Masterclass', '<p><strong>Lektor:</strong> Kateřina & host<br><strong>Čas:</strong> 14:00 - 18:00</p><p class=\'mt-4\'>Omezená kapacita: pouze 10 párů pro zachování individuální zpětné vazby.</p>')">Detailní informace</button>
+          <a href="kontakt.html?akce=bachata-masterclass" class="btn-register text-center">Registrovat se</a>
         </div>
       </div>
     </div>
