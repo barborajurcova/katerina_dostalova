@@ -1,1 +1,170 @@
+<!DOCTYPE html>
+<html lang="cs" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie | Kateřina Dostálová</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #5667B3;         /* Slate Indigo */
+      --color-surface: #9DA7D2;    /* Lavender Grey */
+      --color-primary: #EEB9E9;    /* Pink Orchid */
+      --color-secondary: #95D8F1;  /* Sky Blue */
+      --color-accent: #919EDE;     /* Wisteria Blue */
+      --color-text: #ffffff;
+    }
 
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      margin: 0;
+    }
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+
+    nav { background: rgba(86, 103, 179, 0.95); backdrop-filter: blur(10px); }
+    .nav-link { position: relative; transition: all 0.3s; color: white; opacity: 0.8; }
+    .nav-link:hover, .nav-link.active { color: var(--color-primary); opacity: 1; }
+
+    /* Filtrační tlačítka */
+    .filter-btn {
+      padding: 8px 24px;
+      border-radius: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .filter-btn:hover { border-color: var(--color-secondary); color: var(--color-secondary); }
+    .filter-btn.active { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-bg); }
+
+    /* Galerie grid */
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .gallery-item img, .gallery-item video {
+      width: 100%;
+      height: 100%;
+      object-cover: cover;
+      transition: transform 0.7s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.1); }
+    
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(86, 103, 179, 0.8), transparent);
+      display: flex; align-items: flex-end; padding: 24px;
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+  </style>
+</head>
+<body class="pt-24">
+
+  <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="font-display text-2xl font-bold tracking-wide" style="color: var(--color-primary);">
+        Kateřina Dostálová
+      </a>
+      <div class="hidden md:flex gap-8 font-medium text-sm uppercase tracking-widest">
+        <a href="index.html" class="nav-link">Domů</a>
+        <a href="lekce.html" class="nav-link">Lekce</a>
+        <a href="workshops.html" class="nav-link">Workshopy</a>
+        <a href="galerie.html" class="nav-link active">Galerie</a>
+        <a href="o-mne.html" class="nav-link">O mně</a>
+        <a href="kontakt.html" class="nav-link">Kontakt</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    <header class="text-center mb-12">
+      <h1 class="font-display text-5xl font-bold mb-4">Okamžiky v pohybu</h1>
+      <p class="text-xl opacity-80 font-light" style="color: var(--color-secondary);">Nahlédněte do atmosféry mých lekcí</p>
+    </header>
+
+    <div class="flex flex-wrap justify-center gap-4 mb-16">
+      <button class="filter-btn active" onclick="filterGallery('all', this)">Vše</button>
+      <button class="filter-btn" onclick="filterGallery('latin', this)">Latina</button>
+      <button class="filter-btn" onclick="filterGallery('ballet', this)">Balet</button>
+      <button class="filter-btn" onclick="filterGallery('wedding', this)">Svatby</button>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="gallery-grid">
+      
+      <div class="gallery-item" data-category="latin">
+        <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&w=800&q=80" alt="Latina">
+        <div class="gallery-overlay">
+          <span class="font-display text-xl font-bold">Salsa Night</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="ballet">
+        <img src="https://images.unsplash.com/photo-1518834107812-6a7847c2b295?auto=format&fit=crop&w=800&q=80" alt="Ballet">
+        <div class="gallery-overlay">
+          <span class="font-display text-xl font-bold">Trénink u tyče</span>
+        </div>
+      </div>
+
+      <div class="gallery-item sm:col-span-2 sm:row-span-2" data-category="wedding">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="Svatba">
+        <div class="gallery-overlay">
+          <span class="font-display text-2xl font-bold">První novomanželský tanec</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="ballet">
+        <video src="https://www.w3schools.com/html/mov_bbb.mp4" muted autoplay loop class="w-full h-full object-cover"></video>
+        <div class="gallery-overlay">
+          <span class="font-display text-xl font-bold">Atmosféra na sále</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="latin">
+        <img src="https://images.unsplash.com/photo-1504609774514-3cb1e5b0c0ce?auto=format&fit=crop&w=800&q=80" alt="Bachata">
+        <div class="gallery-overlay">
+          <span class="font-display text-xl font-bold">Bachata Sensual</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="py-12 text-center opacity-60 text-sm">
+    <p>© 2026 Kateřina Dostálová. Všechna práva vyhrazena.</p>
+  </footer>
+
+  <script>
+    function filterGallery(category, btn) {
+      // Deaktivovat všechna tlačítka
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      // Aktivovat kliknuté
+      btn.classList.add('active');
+
+      const items = document.querySelectorAll('.gallery-item');
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'block';
+          // Animace vstupu (volitelné)
+          item.animate([
+            { opacity: 0, transform: 'scale(0.9)' },
+            { opacity: 1, transform: 'scale(1)' }
+          ], { duration: 400, easing: 'ease-out' });
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
